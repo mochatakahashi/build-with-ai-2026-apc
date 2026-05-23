@@ -1,0 +1,176 @@
+.auth-bg {
+  position: relative;
+  background-color: var(--bg-primary);
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-lg);
+}
+
+/* Floating circle decorations */
+.auth-circle {
+  position: absolute;
+  border-radius: var(--radius-full);
+  filter: blur(80px);
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.15;
+}
+
+.auth-circle--1 {
+  width: 300px;
+  height: 300px;
+  background: var(--color-primary);
+  top: 10%;
+  left: 15%;
+  animation: floatCircle1 12s ease-in-out infinite;
+}
+
+.auth-circle--2 {
+  width: 350px;
+  height: 350px;
+  background: var(--color-secondary);
+  bottom: 10%;
+  right: 15%;
+  animation: floatCircle2 15s ease-in-out infinite;
+}
+
+.auth-circle--3 {
+  width: 200px;
+  height: 200px;
+  background: var(--color-accent);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: floatCircle3 10s ease-in-out infinite;
+}
+
+/* Glassmorphism auth card */
+.login-card {
+  position: relative;
+  z-index: 1;
+  max-width: 440px;
+  width: 100%;
+  padding: var(--space-2xl) var(--space-xl);
+  box-shadow: var(--shadow-xl), var(--shadow-glow);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.login-card__header {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+}
+
+.login-card__logo {
+  font-size: var(--font-size-4xl);
+  margin-bottom: var(--space-sm);
+  display: inline-block;
+  animation: logoPulse 2s infinite ease-in-out;
+}
+
+.login-card__title {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-extrabold);
+  margin-bottom: var(--space-xs);
+  letter-spacing: -0.5px;
+}
+
+.login-card__tagline {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* Form input icon styling */
+.form-input-wrapper {
+  position: relative;
+}
+
+.form-input-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-tertiary);
+  pointer-events: none;
+  transition: color var(--transition-fast);
+}
+
+.form-input--has-icon {
+  padding-left: 42px;
+}
+
+.form-input:focus + .form-input-icon {
+  color: var(--color-primary-light);
+}
+
+.spinner-icon {
+  animation: spin 1s linear infinite;
+  margin-right: var(--space-xs);
+}
+
+.login-card__footer {
+  text-align: center;
+  margin-top: var(--space-xl);
+  font-size: var(--font-size-sm);
+}
+
+.login-card__footer p {
+  color: var(--text-secondary);
+}
+
+.login-card__footer a {
+  font-weight: var(--font-weight-semibold);
+}
+
+.demo-credentials {
+  margin-top: var(--space-lg);
+  padding: var(--space-sm) var(--space-md);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px dashed var(--border-color);
+  border-radius: var(--radius-md);
+  text-align: left;
+  font-size: var(--font-size-xs);
+}
+
+.demo-credentials p {
+  margin-bottom: 2px;
+  color: var(--text-tertiary);
+}
+
+.demo-credentials p strong {
+  color: var(--text-secondary);
+}
+
+.demo-credentials p:last-child {
+  margin-bottom: 0;
+}
+
+/* Floating Animations */
+@keyframes floatCircle1 {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-30px) scale(1.1); }
+}
+
+@keyframes floatCircle2 {
+  0%, 100% { transform: translateY(0) scale(1.1); }
+  50% { transform: translateY(40px) scale(0.9); }
+}
+
+@keyframes floatCircle3 {
+  0%, 100% { transform: translate(-50%, -50%) scale(0.9); }
+  50% { transform: translate(-45%, -55%) scale(1.1); }
+}
+
+@keyframes logoPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}

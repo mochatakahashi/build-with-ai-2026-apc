@@ -1,0 +1,228 @@
+.qr-generator, .qr-scanner {
+  max-width: 480px;
+  width: 100%;
+  margin: 0 auto;
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.qr-generator__header, .qr-scanner__header {
+  text-align: center;
+  margin-bottom: var(--space-lg);
+}
+
+.qr-generator__event-title, .qr-scanner__event-title {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-extrabold);
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.qr-generator__subtitle, .qr-scanner__subtitle {
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Generator QR box */
+.qr-generator__code-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-lg);
+}
+
+.qr-generator__code-wrapper {
+  background: white;
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  box-shadow: 0 0 25px rgba(59, 130, 246, 0.2);
+  display: inline-block;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform var(--transition-normal);
+}
+
+.qr-generator__code-wrapper:hover {
+  transform: scale(1.02);
+}
+
+.qr-generator__student-info {
+  text-align: center;
+  margin-bottom: var(--space-md);
+  padding: var(--space-sm);
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: var(--radius-sm);
+}
+
+.qr-generator__student-name {
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.qr-generator__student-id {
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+  font-family: monospace;
+}
+
+.qr-generator__footer {
+  text-align: center;
+}
+
+.qr-generator__instruction {
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.qr-generator__timer {
+  font-size: var(--font-size-2xs);
+  color: var(--text-tertiary);
+}
+
+.qr-generator__timer-icon {
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+/* Viewfinder styling for Scanner */
+.qr-scanner__viewfinder {
+  position: relative;
+  height: 220px;
+  background: #000;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-color);
+  margin-bottom: var(--space-md);
+}
+
+.viewfinder-corner {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 3px solid var(--color-primary-light);
+  z-index: 5;
+}
+
+.viewfinder-corner--tl { top: 12px; left: 12px; border-right: none; border-bottom: none; }
+.viewfinder-corner--tr { top: 12px; right: 12px; border-left: none; border-bottom: none; }
+.viewfinder-corner--bl { bottom: 12px; left: 12px; border-right: none; border-top: none; }
+.viewfinder-corner--br { bottom: 12px; right: 12px; border-left: none; border-top: none; }
+
+.viewfinder-scan-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--color-primary-light), transparent);
+  box-shadow: 0 0 8px var(--color-primary-light);
+  z-index: 4;
+  animation: scanLineMove 2s linear infinite;
+}
+
+.viewfinder-content {
+  text-align: center;
+  color: var(--text-secondary);
+  z-index: 3;
+}
+
+.viewfinder-camera-icon {
+  color: var(--text-muted);
+  margin-bottom: var(--space-sm);
+  animation: cameraPulse 2s infinite ease-in-out;
+}
+
+.viewfinder-status {
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+  font-weight: var(--font-weight-medium);
+}
+
+.success-icon-wrapper, .error-icon-wrapper {
+  width: 72px;
+  height: 72px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.success-icon-wrapper {
+  background: rgba(16, 185, 129, 0.12);
+}
+
+.success-icon {
+  color: var(--color-success);
+}
+
+.error-icon-wrapper {
+  background: rgba(239, 68, 68, 0.12);
+}
+
+.error-icon {
+  color: var(--color-error);
+}
+
+.verify-success-title {
+  color: var(--color-success);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-md);
+}
+
+.verify-error-title {
+  color: var(--color-error);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-sm);
+}
+
+.verify-error-message {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  max-width: 320px;
+  line-height: 1.5;
+}
+
+.attendee-preview {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  margin: var(--space-md) 0;
+  width: 100%;
+}
+
+.attendee-name {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+}
+
+.attendee-meta {
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+  margin-top: 1px;
+}
+
+.width-full {
+  width: 100%;
+}
+
+@keyframes scanLineMove {
+  0% { top: 0%; }
+  50% { top: 100%; }
+  100% { top: 0%; }
+}
+
+@keyframes cameraPulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}

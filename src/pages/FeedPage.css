@@ -1,0 +1,336 @@
+/* ============================================
+   FeedPage — CampusConnect
+   Main social media feed layout
+   ============================================ */
+
+/* ─── Page Container ─── */
+.feed-page {
+  max-width: var(--max-feed-width);
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+  padding-bottom: var(--space-3xl);
+}
+
+/* ─── Page Header ─── */
+.feed-page__header {
+  padding: var(--space-xl) 0 var(--space-md);
+  animation: fadeInDown 0.4s ease forwards;
+}
+
+.feed-page__title {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-extrabold);
+  margin-bottom: var(--space-xs);
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--color-primary-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.feed-page__subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--text-tertiary);
+}
+
+/* ─── Category Tabs ─── */
+.feed-page__tabs {
+  display: flex;
+  gap: var(--space-sm);
+  padding-bottom: var(--space-md);
+  margin-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--border-color);
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  animation: fadeIn 0.3s ease 0.1s forwards;
+  opacity: 0;
+}
+
+.feed-page__tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.feed-page__tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: var(--space-sm) var(--space-md);
+  background: none;
+  border: 1px solid transparent;
+  border-radius: var(--radius-full);
+  font-family: var(--font-family);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-tertiary);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+}
+
+.feed-page__tab:hover {
+  color: var(--text-secondary);
+  background: var(--glass-bg);
+}
+
+.feed-page__tab--active {
+  color: var(--color-primary);
+  background: rgba(59, 130, 246, 0.1);
+  border-color: rgba(59, 130, 246, 0.2);
+  font-weight: var(--font-weight-semibold);
+}
+
+.feed-page__tab--active:hover {
+  background: rgba(59, 130, 246, 0.14);
+}
+
+/* ─── Create Post Card ─── */
+.feed-page__create-post {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  transition: all var(--transition-normal);
+  animation: fadeInUp 0.4s ease 0.15s forwards;
+  opacity: 0;
+}
+
+.feed-page__create-post:hover {
+  border-color: var(--border-color-hover);
+}
+
+.feed-page__create-post-trigger {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  cursor: pointer;
+}
+
+.feed-page__create-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--color-primary);
+  object-fit: cover;
+  flex-shrink: 0;
+  background: var(--bg-tertiary);
+}
+
+.feed-page__create-placeholder {
+  flex: 1;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-align: left;
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.feed-page__create-placeholder:hover {
+  background: var(--bg-input-focus);
+  border-color: var(--border-color-hover);
+}
+
+/* ─── Create Post Form (Expanded) ─── */
+.feed-page__create-form {
+  animation: fadeIn 0.25s ease forwards;
+}
+
+.feed-page__create-textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: var(--space-md);
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+  resize: vertical;
+  outline: none;
+  transition: all var(--transition-fast);
+  margin-bottom: var(--space-md);
+}
+
+.feed-page__create-textarea:focus {
+  border-color: var(--color-primary);
+  background: var(--bg-input-focus);
+  box-shadow: 0 0 0 3px var(--color-primary-glow);
+}
+
+.feed-page__create-textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.feed-page__create-options {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-md);
+}
+
+.feed-page__create-select {
+  padding: var(--space-sm) var(--space-md);
+  padding-right: 32px;
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  font-size: var(--font-size-xs);
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2394a3b8' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  outline: none;
+  cursor: pointer;
+  height: 36px;
+  transition: border-color var(--transition-fast);
+}
+
+.feed-page__create-select:focus {
+  border-color: var(--color-primary);
+}
+
+.feed-page__create-image-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-md);
+  background: none;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font-family: var(--font-family);
+  font-size: var(--font-size-xs);
+  cursor: pointer;
+  height: 36px;
+  transition: all var(--transition-fast);
+}
+
+.feed-page__create-image-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: rgba(59, 130, 246, 0.04);
+}
+
+.feed-page__create-image-btn--active {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: rgba(59, 130, 246, 0.08);
+}
+
+.feed-page__create-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+
+/* ─── Image Uploader Wrapper in Create Form ─── */
+.feed-page__image-upload-section {
+  margin-bottom: var(--space-md);
+  animation: fadeIn 0.2s ease forwards;
+}
+
+/* ─── Post List ─── */
+.feed-page__posts {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* ─── Loading State ─── */
+.feed-page__loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-3xl) 0;
+  gap: var(--space-md);
+}
+
+.feed-page__loading-spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid var(--border-color);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.feed-page__loading-text {
+  font-size: var(--font-size-sm);
+  color: var(--text-tertiary);
+}
+
+/* ─── Empty State ─── */
+.feed-page__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-3xl) var(--space-lg);
+  text-align: center;
+  animation: fadeIn 0.4s ease forwards;
+}
+
+.feed-page__empty-icon {
+  width: 64px;
+  height: 64px;
+  margin-bottom: var(--space-lg);
+  color: var(--text-muted);
+  opacity: 0.5;
+}
+
+.feed-page__empty-title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-sm);
+}
+
+.feed-page__empty-text {
+  font-size: var(--font-size-sm);
+  color: var(--text-tertiary);
+  max-width: 340px;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .feed-page {
+    padding: 0 var(--space-sm);
+  }
+
+  .feed-page__header {
+    padding: var(--space-md) 0 var(--space-sm);
+  }
+
+  .feed-page__title {
+    font-size: var(--font-size-2xl);
+  }
+
+  .feed-page__create-post {
+    padding: var(--space-md);
+  }
+
+  .feed-page__create-options {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .feed-page__create-select,
+  .feed-page__create-image-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

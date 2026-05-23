@@ -1,0 +1,60 @@
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+.profile-card__link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  flex-grow: 1;
+  width: 100%;
+}
+
+.profile-card__avatar-container {
+  position: relative;
+  margin-bottom: var(--space-md);
+}
+
+.profile-card__badge {
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: var(--font-size-2xs) !important;
+  white-space: nowrap;
+  box-shadow: var(--shadow-sm);
+}
+
+.profile-card__info {
+  margin-bottom: var(--space-md);
+  width: 100%;
+}
+
+.profile-card__name {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  margin-bottom: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.profile-card__id {
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+  font-family: monospace;
+}
+
+.profile-card__actions {
+  width: 100%;
+  margin-top: auto;
+}

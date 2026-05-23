@@ -1,0 +1,2 @@
+import{j as e,L as o}from"./index-UyJ-zxDp.js";function n(){return e.jsx("div",{className:"not-found-page",children:e.jsxs("div",{className:"not-found-card glass-card",children:[e.jsx("h1",{className:"not-found-code text-gradient",children:"404"}),e.jsx("h2",{className:"not-found-title",children:"Page Not Found"}),e.jsx("p",{className:"not-found-message",children:"The page you are looking for does not exist or has been moved."}),e.jsx(o,{to:"/feed",className:"btn btn--primary",children:"Go Home"})]})})}export{n as default};
+//# sourceMappingURL=NotFoundPage-B9WiA1LF.js.map
