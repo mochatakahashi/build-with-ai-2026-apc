@@ -12,6 +12,7 @@ export default function OrgCard({ org, currentUserId, onJoin, onLeave }) {
 
   const handleJoinClick = (e) => {
     e.preventDefault();
+    e.stopPropagation();
     if (isMember) {
       onLeave(id);
     } else {
@@ -20,8 +21,8 @@ export default function OrgCard({ org, currentUserId, onJoin, onLeave }) {
   };
 
   return (
-    <div className="org-card glass-card glass-card--interactive">
-      <Link to={`/organizations/${id}`} className="org-card__link">
+    <Link to={`/organizations/${id}`} className="org-card-link" style={{ textDecoration: 'none', color: 'inherit' }}>
+      <div className="org-card glass-card glass-card--interactive">
         <div className="org-card__header flex items-center gap-md">
           {logoUrl ? (
             <img src={logoUrl} alt={name} className="org-card__logo" />
@@ -35,23 +36,23 @@ export default function OrgCard({ org, currentUserId, onJoin, onLeave }) {
         </div>
 
         <p className="org-card__description">{description}</p>
-      </Link>
 
-      <div className="org-card__footer flex justify-between items-center mt-md">
-        <span className="org-card__members flex items-center gap-xs">
-          <Users size={14} className="text-secondary" />
-          <span><strong>{memberCount}</strong> members</span>
-        </span>
+        <div className="org-card__footer flex justify-between items-center mt-md">
+          <span className="org-card__members flex items-center gap-xs">
+            <Users size={14} className="text-secondary" />
+            <span><strong>{memberCount}</strong> members</span>
+          </span>
 
-        {onJoin && onLeave && (
-          <button
-            onClick={handleJoinClick}
-            className={`btn btn--sm ${isMember ? 'btn--secondary' : 'btn--primary'}`}
-          >
-            {isMember ? 'Joined ✓' : 'Join'}
-          </button>
-        )}
+          {onJoin && onLeave && (
+            <button
+              onClick={handleJoinClick}
+              className={`btn btn--sm ${isMember ? 'btn--secondary' : 'btn--primary'}`}
+            >
+              {isMember ? 'Joined ✓' : 'Join'}
+            </button>
+          )}
+        </div>
       </div>
-    </div>
+    </Link>
   );
 }

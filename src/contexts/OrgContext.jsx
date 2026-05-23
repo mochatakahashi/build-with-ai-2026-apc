@@ -99,6 +99,16 @@ export function OrgProvider({ children }) {
     }
   };
 
+  const getOrganization = useCallback(async (orgId) => {
+    try {
+      const org = await orgService.getOrganization(orgId);
+      return org;
+    } catch (error) {
+      console.error('Failed to load organization:', error);
+      return null;
+    }
+  }, []);
+
   const setCategory = (category) => {
     setActiveCategory(category);
   };
@@ -117,6 +127,7 @@ export function OrgProvider({ children }) {
         setCategory,
         setSearch,
         fetchOrganizations,
+        getOrganization,
         joinOrg,
         leaveOrg,
         promoteToOfficer,
