@@ -22,6 +22,7 @@ export default function OrgDetailPage() {
     demoteToMember,
     removeFromOrg,
     fetchOrganizations,
+    getOrganization,
   } = useOrgs();
 
   const [org, setOrg] = useState(null);
@@ -40,10 +41,13 @@ export default function OrgDetailPage() {
     if (!orgId) return;
     setLoading(true);
     try {
-      // Find org
-      const orgs = await useOrgs().organizations;
-      // We can also fetch directly from service to get fresh state
-      const o = await import('../services/orgService').then((m) => m.orgService.getOrganization(orgId));
+      // Fetch organization using the context method
+      const o = await getOrganization(orgId);
+      if (!o) {
+        setOrg(null);
+        setLoading(false);
+        return;
+      }
       setOrg(o);
       
       const role = currentUser ? o.members[currentUser.id] || null : null;
@@ -66,8 +70,7 @@ export default function OrgDetailPage() {
       // Fetch events
       await fetchEvents('all', currentUser?.id);
       
-      // Filter events belonging to this organization. 
-      // We check if organizerName matches org name, or if organizerId is one of the officers.
+      // Filter events belonging to this organization
       const officersList = details.filter((m) => m.role === 'officer').map((m) => m.id);
       const filteredEvents = allEvents.filter(
         (event) => event.organizerId === orgId || officersList.includes(event.organizerId)
@@ -80,7 +83,7 @@ export default function OrgDetailPage() {
     } finally {
       setLoading(false);
     }
-  }, [orgId, currentUser, fetchEvents, allEvents]);
+  }, [orgId, currentUser, fetchEvents, allEvents, getOrganization]);
 
   useEffect(() => {
     fetchOrgDetails();
