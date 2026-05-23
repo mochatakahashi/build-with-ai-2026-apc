@@ -32,6 +32,16 @@ export function EventProvider({ children }) {
     setActiveFilter(filter);
   }, []);
 
+  const getEvent = useCallback(async (eventId) => {
+    try {
+      const event = await eventService.getEvent(eventId);
+      return event;
+    } catch (error) {
+      console.error('Failed to load event:', error);
+      return null;
+    }
+  }, []);
+
   const createEvent = async (eventData) => {
     try {
       const newEvent = await eventService.createEvent(eventData);
@@ -87,6 +97,7 @@ export function EventProvider({ children }) {
         activeFilter,
         setFilter,
         fetchEvents,
+        getEvent,
         createEvent,
         updateEvent,
         deleteEvent,
